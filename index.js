@@ -21,7 +21,7 @@ function createBot() {
     port: 34731,
     username: 'SystemBot24_7',
     auth: 'offline',
-    version: false
+    version: '26.2'
   });
 
   bot.on('login', () => {
