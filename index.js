@@ -1,7 +1,7 @@
 const mineflayer = require('mineflayer');
 const http = require('http');
 
-// 1. HTTP server pro spokojenost Renderu (otevře port)
+// 1. HTTP server pro Render (udrží službu aktivní)
 const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('SystemBot24_7 is running!');
@@ -12,14 +12,15 @@ server.listen(PORT, () => {
   console.log(`HTTP server bezi na portu ${PORT}`);
 });
 
-// 2. Logika Minecraft bota s automatickým opakováním připojení
+// 2. Připojení bota přes dynamickou IP
 function createBot() {
-  console.log('Pripojuji bota k Aternosu...');
-  
+  console.log('Pripojuji bota k Aternosu pres dynamickou IP...');
+
   const bot = mineflayer.createBot({
-    host: 'lilium.aternos.me',
+    host: 'pleco.aternos.host',
     port: 34731,
     username: 'SystemBot24_7',
+    auth: 'offline',
     version: false
   });
 
@@ -36,5 +37,7 @@ function createBot() {
     setTimeout(createBot, 10000);
   });
 }
+
+createBot();
 
 createBot();
